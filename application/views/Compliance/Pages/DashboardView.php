@@ -9,12 +9,9 @@ $obligations = $data['obligations'];
 //$breach = $data['breaches'];
 //$complies = $data['complies'];
 //$comp_req = $data['comp_req'];
-
 //    $comply_count = $data['total_comp'];
 //$total_obl = $data['total_obligations'];
-
 //$ov_compliance = $data['overall compliance'];
-
 //$penalty = $data['total_penalties'];
 //$total_breaches = $data['total_breaches'];
 $approved_breaches = ( $data['breaches_approved']);
@@ -53,25 +50,16 @@ $legal_non_comp = $data['legal_non_comp'];
             <div class="card-box tilebox-one">
                 <i class="icon-lock-open pull-xs-right text-muted"></i>
                 <h6 class="text-muted text-uppercase m-b-20">Penalties</h6>
-                <h2 class="m-b-20" data-plugin="counterup">KES <?= number_format($data['breaches_penalty'], $decimals = "2", $dec_point = ".", $thousands_sep = ",")  ?></h2>
+                <h2 class="m-b-20" data-plugin="counterup">KES <?= number_format($data['breaches_penalty'], $decimals = "2", $dec_point = ".", $thousands_sep = ",") ?></h2>
                 <span class="label label-info"> <?= $approved_breaches ?> </span> <span class="text-muted"> No. of Breaches</span>
             </div>
         </div>
 
         <div class="col-sm-4 col-xs-12">
             <div class="card card-block">
-               <!-- <  <div class="card-title m-t-10" >
-                  h4 class="text-center"> No. of Obligations by Type</h4>
-                </div>-->
                 <div id="obligation_type">
-                     <?php
-                $chart_id = "chart_name_variable_rules";
-                $data = array(
-                    array("name" => "Statutory Returns", "value" => $data['Stat_returns'], "color" => "#ff8800"),
-                    array("name" => "Legal Requirements", "value" => $data['Legal_req'], "color" => "#992222"),
-                    array("name" => "Business Compliance", "value" => $data['Business_req'], "color" => "#55cc55"),
-                );
-                ?>
+
+                    <?php //print_pre($data); ?>
                 </div>
             </div>
         </div>
@@ -121,7 +109,7 @@ $legal_non_comp = $data['legal_non_comp'];
             <div class="tab-content" id="myTabContent">
                 <div role="tabpanel" class="tab-pane fade in active" id="home"
                      aria-labelledby="home-tab">
-                         <?php // print_pre($obligations); ?>
+                         <?php // print_pre($obligations);  ?>
                     <table id="datatable-buttons" class="table table-striped  table-responsive table-sm">
                         <thead>
                             <tr>
@@ -153,13 +141,13 @@ $legal_non_comp = $data['legal_non_comp'];
 
                                 <tr>
                                     <td><?= $value['short_code'] ?></td>
-                                    <td><a class="link" href="<?= $preview_link ?>"<?= MODAL_LINK ?>><?= ucwords($value['title'])    ?></a></td>
+                                    <td><a class="link" href="<?= $preview_link ?>"<?= MODAL_LINK ?>><?= ucwords($value['title']) ?></a></td>
                                     <td><?= ucwords($value['compliance']['type']) ?></td>
                                     <td><?= ucwords($value['compliance']['title']) ?></td>
                                     <td>
                                         <span class="label label-pill label-<?= $submission_status_label ?>">
-                                        <?= ucwords(str_replace("_", " ", $value['last_submission_status'])) ?>
-                                    </span>
+                                            <?= ucwords(str_replace("_", " ", $value['last_submission_status'])) ?>
+                                        </span>
                                     </td>
                                     <td>
                                         <span class="label label-pill label-<?= $status_label ?>">
@@ -215,53 +203,61 @@ foreach ($scripts as $key => $value) {
 <script type="text/javascript">
     $(document).ready(function () {
         $('#datatable').DataTable();
-
         //Buttons examples
         var table = $('#datatable-buttons').DataTable({
             lengthChange: false,
             buttons: ['copy', 'excel', 'pdf', 'colvis'],
         });
-
         table.buttons().container()
                 .appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
-    });
-
-</script>
+    });</script>
 
 <!-- Highcharts Pie Chart Script -->
 <script type="text/javascript">
-$(function () { 
-    var myChart = Highcharts.chart('obligation_type', {
-        chart: {
-            type: 'pie'
-        },
-        title: {
-            text: 'No. of Obligations by Type'
-        },
-      
-    plotOptions: {
-        pie: {
-          innerSize: 100,
-            depth: 45
-        }
-    },
-        series: [{
-        name: 'Delivered amount',
-        data: [
-            ['Bananas', 30],
-            ['Kiwi', 30],
-            ['Mixed nuts', 30]
-           
-        ]
-        }]
-    });
-});
-</script>
+<?php
+$data = json_encode(array(
+    array("Statutory", $data['Stat_returns']),
+    array("Legal", $data['Legal_req']),
+    array("Business", $data['Business_req'])
+        ));
+?>
+    $(function () {
+        var myChart = Highcharts.chart('obligation_type', {
+            chart: {
+                type: 'pie'
+            },
+            title: {
+                text: 'No. of Obligations by Type'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    innerSize: 100,
+                    depth: 45,
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>:<br/> {point.percentage:.1f} %',
+                        style: {
+                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                        }
+                    }
+
+                }
+            },
+            series: [{
+                    name: 'Delivered amount',
+                    data: <?= $data ?>
+                }]
+        });
+    });</script>
 <!-- DataTables init Script -->
 <script type="text/javascript">
     $(document).ready(function () {
         $('#datatable').DataTable();
-
         //Buttons examples
         var table0 = $('#datatable-buttons0').DataTable({
             lengthChange: true
@@ -275,16 +271,13 @@ $(function () {
             lengthChange: true
                     // buttons: ['excel', 'pdf', 'colvis']
         });
-
         // table0.buttons().container()
         //         .appendTo('#datatable-buttons0_wrapper .col-md-6:eq(0)');
         // table1.buttons().container()
         //         .appendTo('#datatable-buttons1_wrapper .col-md-6:eq(0)');
         // table2.buttons().container()
         //         .appendTo('#datatable-buttons2_wrapper .col-md-6:eq(0)');
-    });
-
-</script>
+    });</script>
 <!-- Calendar Jquery Script -->
 <script type="text/javascript">
 
@@ -292,15 +285,10 @@ $(function () {
 
     !function ($) {
         "use strict";
-
         var CalendarApp = function () {
             this.$calendar = $('#calendar'),
                     this.$calendarObj = null
         };
-
-
-
-
         /* Initializing */
         CalendarApp.prototype.init = function () {
             /*  Initialize the calendar  */
@@ -310,7 +298,6 @@ $(function () {
             var y = date.getFullYear();
             var form = '';
             var today = new Date($.now());
-
             var Events = [
 <?php foreach ($obligations as $key => $value):
     ?>
@@ -328,7 +315,6 @@ $(function () {
 
                     },<?php endforeach; ?>
             ];
-
             var $this = this;
             $this.$calendarObj = $this.$calendar.fullCalendar({
                 slotDuration: '00:15:00', /* If we want to split day time each 15minutes */
@@ -355,7 +341,6 @@ $(function () {
                 }
 
             });
-
         },
                 //init CalendarApp
                 $.CalendarApp = new CalendarApp, $.CalendarApp.Constructor = CalendarApp
@@ -366,19 +351,14 @@ $(function () {
                         "use strict";
                         $.CalendarApp.init()
                     }(window.jQuery);
-
-
-
             var doc = new jsPDF('landscape');
             $(".content-chart-dashboard").css('background', '#fff');
             $('#comp_table_report_export_btn').click(function () {
                 doc.addHTML($('.content-chart-dashboard')[0], function () {
 
                     doc.save('Compliance_report_table.pdf');
-
                 });
-            });
-</script>
+            });</script>
 <!-- App js -->
 <script src="<?= base_url("assets/js/jquery.core.js") ?>"></script>
 <script src="<?= base_url("assets/js/jquery.app.js") ?>"></script>

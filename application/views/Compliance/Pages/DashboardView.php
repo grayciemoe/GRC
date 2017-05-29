@@ -60,10 +60,11 @@ $legal_non_comp = $data['legal_non_comp'];
 
         <div class="col-sm-4 col-xs-12">
             <div class="card card-block">
-                <div class="card-title m-t-10">
-                    <h4 class="text-center"> No. of Obligations by Compliance Requirement Type</h4>
-                </div>
-                <?php
+               <!-- <  <div class="card-title m-t-10" >
+                  h4 class="text-center"> No. of Obligations by Type</h4>
+                </div>-->
+                <div id="obligation_type">
+                     <?php
                 $chart_id = "chart_name_variable_rules";
                 $data = array(
                     array("name" => "Statutory Returns", "value" => $data['Stat_returns'], "color" => "#ff8800"),
@@ -71,14 +72,6 @@ $legal_non_comp = $data['legal_non_comp'];
                     array("name" => "Business Compliance", "value" => $data['Business_req'], "color" => "#55cc55"),
                 );
                 ?>
-                <?= pie_chart_cs($chart_id, $data) ?>
-                <div class="row m-t-10 text-muted">
-                    <h6 class="text-center">Summary</h6>
-                    <ul class="list-group">
-                        <?php foreach ($data as $key => $value): ?>
-                            <li class="list-group-item"><?= $value['name'] ?> : <?= $value['value'] ?></li>
-                        <?php endforeach; ?>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -235,8 +228,35 @@ foreach ($scripts as $key => $value) {
 
 </script>
 
-<!-- Chart Js init Script -->
-
+<!-- Highcharts Pie Chart Script -->
+<script type="text/javascript">
+$(function () { 
+    var myChart = Highcharts.chart('obligation_type', {
+        chart: {
+            type: 'pie'
+        },
+        title: {
+            text: 'No. of Obligations by Type'
+        },
+      
+    plotOptions: {
+        pie: {
+          innerSize: 100,
+            depth: 45
+        }
+    },
+        series: [{
+        name: 'Delivered amount',
+        data: [
+            ['Bananas', 30],
+            ['Kiwi', 30],
+            ['Mixed nuts', 30]
+           
+        ]
+        }]
+    });
+});
+</script>
 <!-- DataTables init Script -->
 <script type="text/javascript">
     $(document).ready(function () {

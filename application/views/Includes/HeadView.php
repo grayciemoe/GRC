@@ -57,7 +57,8 @@
 
         <script src="<?= base_url("assets/js/jquery.min.js") ?>"></script>
         <script src="<?= base_url("assets/js/bootstrap.min.js") ?>"></script> 
-        <script src="<?= base_url("assets/js/modernizr.min.js") ?>"></script>         
+        <script src="<?= base_url("assets/js/modernizr.min.js") ?>"></script> 
+        <script src="http://code.highcharts.com/highcharts.js"></script>        
         <!-- jQuery  -->
         <script src="<?= base_url("assets/js/tether.min.js") ?>"></script><!-- Tether for Bootstrap -->
         <script src="<?= base_url("assets/js/waves.js") ?>"></script>

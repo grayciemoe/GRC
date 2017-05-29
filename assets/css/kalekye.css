@@ -1,0 +1,33 @@
+.incident-charts{
+  margin-bottom: 10px;
+}
+.incident-detail{
+	float: left;
+	
+  
+}
+
+
+.specific-details-tabs li{
+	display: inline-block;
+    width: 24%;
+    text-align: center;
+    border: none;
+
+}
+.unapproved-details-tabs li{
+	display: inline-block;
+    width: 33%;
+    text-align: center;
+    border: none;
+
+}
+
+
+.unapproved-compliance-tabs li{
+    display: inline-block;
+    width: 44%;
+    text-align: center;
+    border: none;
+
+}

@@ -1,0 +1,31 @@
+function repository_create(:send to Risk Manager for approval) {
+
+
+        Hi,
+The Key Risk Area <Name > has been created in the business unit <business_unit> and needs your approval.
+
+Follow this <link> to review this Key Risk Area
+    }
+
+function repository_approve(:send to Unit Owner who created the repository) {
+         Hi,
+The Key Risk Area <Name > has been approved and added to the repository source pool.
+
+Follow this <link> to view this Key Risk Area
+    }
+
+
+function unit_create(:Send to unit owner who has been assigned the business unit){
+Hi,
+
+The <business unit/functional unit/process/project> has been created and assigned to you as the unit owner
+
+Follow this <link> to view this unit.
+        
+    }
+
+function user_create() {
+     Hi an account for you as the <user_type>. Your temporary password is <password>.
+
+Kindly access the system through this <link>   
+    }

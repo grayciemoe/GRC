@@ -1,0 +1,52 @@
+application: conferenceapptraining
+version: 3
+runtime: php55
+api_version: 1
+threadsafe: yes
+
+handlers:
+
+- url: /assets/*
+  static_dir: assets
+
+- url: /assets/js/*
+  static_dir: assets/js
+   
+- url: /assets/css/*
+  static_dir: assets/css/
+
+
+- url: /assets/css/fonts/*
+  static_dir: assets/css/fonts/
+
+
+- url: /assets/fonts/*
+  static_dir: assets/fonts/
+
+
+- url: /assets/images/*
+  static_dir: assets/images/
+
+
+- url: /assets/js/*
+  static_dir: assets/js/
+
+
+- url: /assets/pages/*
+  static_dir: assets/pages/
+
+
+- url: /assets/plugins/*
+  static_dir: assets/plugins/
+
+
+- url: /assets/trash/*
+  static_dir: assets/trash/
+
+
+- url: /assets/uploads/*
+  static_dir: assets/uploads/
+
+- url: .*
+  script: index.php
+

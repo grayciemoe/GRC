@@ -1,0 +1,242 @@
+body, h1,h2,h3,h4,h5,p {
+    color: #222;
+}
+.wrapper {
+    padding-top: 190px !important;
+}
+.page-title { 
+    line-height: 50px;
+}
+#topnav .navigation-menu > li > a {
+    padding-top: 14px; 
+    padding-bottom: 14px; 
+
+}
+.m-b-15{
+    margin-bottom: 15px !important;
+}
+.m-r-10{
+    margin-right: 10px !important;
+}
+.m-t-15{
+    margin-top: 15px !important;
+}
+
+#topnav .topbar-main .menu-extras-grc .navbar-nav li a.nav-link {
+    padding: 0 10px;
+    border-right: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    text-transform: uppercase;
+    opacity: 0.6;
+}
+#topnav .topbar-main .menu-extras-grc .navbar-nav li.active a.nav-link,
+#topnav .topbar-main .menu-extras-grc .navbar-nav li:focus a.nav-link,
+#topnav .topbar-main .menu-extras-grc .navbar-nav li:hover a.nav-link {
+    opacity: 0.9;
+
+}
+.dashboard-graph{
+    background: #fff;
+    height: 50px;
+}
+
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-link.active:focus, .nav-tabs .nav-link.active:hover, .nav-tabs .nav-item.open .nav-link, .nav-tabs .nav-item.open .nav-link:focus, .nav-tabs .nav-item.open .nav-link:hover{
+    background: none;
+    border-bottom: none;
+    border:none !important;
+    border-bottom: 3px solid #008BFF !important;
+    border-radius: 0;
+
+}
+
+.tabs-risk li{
+    display: inline-block;
+    width: 24%;
+    text-align: center;
+    border: none;
+}
+.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover{
+    border: none;
+}
+
+.risk-list{
+
+    margin-left: 40px;
+
+}
+
+.risk-register-page{
+
+}
+
+.risk-register-item li{
+    display: inline;
+    width: 24%;
+    border: none;
+    border-bottom: none;
+
+}
+
+.compliance-item li{
+    display: inline;
+    width: 33%;
+    border: none;
+    border-bottom: none;
+
+}
+
+.risk-list li{
+    border: none;
+    color: #330;
+}
+
+
+
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-link.active:focus, .nav-tabs .nav-link.active:hover, .nav-tabs .nav-item.open .nav-link, .nav-tabs .nav-item.open .nav-link:focus, .nav-tabs .nav-item.open .nav-link:hover{
+    background: none;
+    border-bottom: none;
+    border:none !important;
+    border-bottom: 3px solid #008BFF !important;
+    border-radius: 0;
+}
+
+/* KINJA kk */
+
+
+.m_bottom_5 { margin-bottom:5px;}
+.m_bottom_10 {margin-bottom:10px;}
+.m_bottom_15 {margin-bottom:15px;}
+.m_bottom_20 {margin-bottom:20px;}
+.heat-map  {  }
+.heat-map .heat-box { width:16.66%; height: 100px; margin:0%; box-shadow: inset 1px 1px 1px #eee; }
+.heat-map .heat-box.controls-ratings { width:20%; margin:0%;  }
+.overflowContainer { 
+    overflow: hidden; 
+    height: 100px; 
+    min-height: 100px; 
+    background-color: inherit;
+    box-shadow: inset 1px 1px 1px #eee; 
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    -transition: all 0.3s;
+    transition: all 0.3s;
+    
+}
+.heat-map .heat-box:hover .overflowContainer {
+    height: auto;
+    overflow: visible;
+    width: inherit;
+    position: absolute;
+    box-shadow: 0px 0px 10px #000;
+    border-radius: 10px;
+    min-height: 100px;
+
+} 
+.heat-map h3 { text-transform:uppercase; margin:10px; font-size:13px; font-weight: bold;} 
+.p_label { color:#000; text-shadow:1px 1px 1px #ccc; position:absolute; z-index:-1; margin:10px; opacity:0.1; font-size:12px; }
+
+.ht-red,  .cr-poor,     .nr-severe,   .gr-severe, .switch-danger.switch-heat input:checked + span  
+{ background:rgba(255,0,0,1.00); }
+.gross_risk-severe, .net_risk-severe, .control_ratings-poor, .ht-red, .cr-poor,     .nr-severe,   .gr-severe , .switch-danger.switch-heat input:checked + span    
+{ background:rgba(230,0,0,1.00);color: #eee; font-weight: bold;  text-align: center;  }
+
+.gross_risk-high, .net_risk-high, .control_ratings-weak, .ht-orange, .cr-weak,     .nr-high,   .gr-high , .switch-warning.switch-heat input:checked + span    
+{ background:rgba(255,100,0,1.00); color: #eee; font-weight: bold;  text-align: center; }
+
+.gross_risk-moderate, .net_risk-moderate, .control_ratings-moderate,.ht-yellow, .cr-moderate, .nr-moderate,   .gr-moderate, .switch-moderate.switch-heat input:checked + span   
+{ background:rgba(255,200,0,1.00); color: #eee; font-weight: bold;  text-align: center; }
+.gross_risk-minimal, .net_risk-minimal, .control_ratings-good,.ht-green,  .cr-good,     .nr-minimal,  .gr-minimal, .switch-success.switch-heat input:checked + span   
+{ background:rgba(0,255,21,1.00);color: #eee; font-weight: bold;  text-align: center; }
+.gross_risk-low, .net_risk-low, .control_ratings-excellent,.ht-blue,   .cr-excellent,  .nr-low,     .gr-low , .switch-info.switch-heat input:checked + span 
+{ background:rgba(0,102,0,1.00);color: #eee;  font-weight: bold;  text-align: center; }
+
+
+td.ht-red,  td.cr-poor,     td.nr-severe,   td.gr-severe, td.switch-dangertd.switch-heat input:checked + span  
+{ border-top-color:rgba(255,0,0,1.00); background:none;border-top-width:2px;color:#777;  }
+td.gross_risk-severe, td.net_risk-severe, td.control_ratings-poor, td.ht-red, td.cr-poor,     td.nr-severe,   td.gr-severe , td.switch-dangertd.switch-heat input:checked + span    
+{ border-top-color:rgba(230,0,0,1.00);background:none;border-top-width:2px; color:#777;  font-weight: 500; text-align: center;  }
+
+td.gross_risk-high, td.net_risk-high, td.control_ratings-weak, td.ht-orange, td.cr-weak,     td.nr-high,   td.gr-high , td.switch-warningtd.switch-heat input:checked + span    
+{ border-top-color:rgba(255,100,0,1.00);background:none; border-top-width:2px; color: #777;  font-weight: 500; text-align: center; }
+
+td.gross_risk-moderate, td.net_risk-moderate, td.control_ratings-moderate,td.ht-yellow, td.cr-moderate, td.nr-moderate,   td.gr-moderate, td.switch-moderatetd.switch-heat input:checked + span   
+{ border-top-color:rgba(255,200,0,1.00);background:none;border-top-width:2px;  color: #777;  font-weight: 500; text-align: center; }
+td.gross_risk-minimal, td.net_risk-minimal, td.control_ratings-good,td.ht-green,  td.cr-good,     td.nr-minimal,  td.gr-minimal, td.switch-successtd.switch-heat input:checked + span   
+{ border-top-color:rgba(0,255,21,1.00);background:none;border-top-width:2px; color: #777;  font-weight: 500; text-align: center; }
+td.gross_risk-low, td.net_risk-low, td.control_ratings-excellent,td.ht-blue,   td.cr-excellent,  td.nr-low,     td.gr-low , td.switch-infotd.switch-heat input:checked + span 
+{ border-top-color:rgba(0,102,0,1.00);background:none; border-top-width:2px; color: #777;  font-weight: 500; text-align: center; }
+
+
+
+td.ht-red,  td.cr-poor,     td.nr-severe,   td.gr-severe, td.switch-dangertd.switch-heat input:checked + span  
+{ border-color:rgba(255,0,0,1.00); background:none;border-top-width:4px;color:#777;  }
+td.gross_risk-severe, td.net_risk-severe, td.control_ratings-poor, td.ht-red, td.cr-poor,     td.nr-severe,   td.gr-severe , td.switch-danger td.switch-heat input:checked + span    
+{ border-color:rgba(230,0,0,1.00);background:none;border-top-width:4px; color:#777;  border-left-width:1px; border-right-width:1px; font-weight: 500; text-align: center;  }
+
+td.gross_risk-high, td.net_risk-high, td.control_ratings-weak, td.ht-orange, td.cr-weak,     td.nr-high,   td.gr-high , td.switch-warning td.switch-heat input:checked + span    
+{ border-color:rgba(255,100,0,1.00);background:none; border-top-width:4px; border-left-width:1px; border-right-width:1px; color: #777;  font-weight: 500; text-align: center; }
+
+td.gross_risk-moderate, td.net_risk-moderate, td.control_ratings-moderate,td.ht-yellow, td.cr-moderate, td.nr-moderate,   td.gr-moderate, td.switch-moderatetd.switch-heat input:checked + span   
+{ border-color:rgba(255,200,0,1.00);background:none;border-top-width:4px;  color: #777;  border-left-width:1px; border-right-width:1px; font-weight: 500; text-align: center; }
+td.gross_risk-minimal, td.net_risk-minimal, td.control_ratings-good,td.ht-green,  td.cr-good,     td.nr-minimal,  td.gr-minimal, td.switch-successtd.switch-heat input:checked + span   
+{ border-color:rgba(0,255,21,1.00);background:none;border-top-width:4px; color: #777;  border-left-width:1px; border-right-width:1px; font-weight: 500; text-align: center; }
+td.gross_risk-low, td.net_risk-low, td.control_ratings-excellent,td.ht-blue,   td.cr-excellent,  td.nr-low,     td.gr-low , td.switch-infotd.switch-heat input:checked + span 
+{ border-color:rgba(0,102,0,1.00);background:none; border-top-width:4px; color: #777;  border-left-width:1px; border-right-width:1px; font-weight: 500; text-align: center; }
+
+
+
+.heat-box.bg-gray-lighter { color: #777;} 
+
+.switch-danger.switch-heat input:checked + span   ,
+.switch-warning.switch-heat input:checked + span  ,
+.switch-moderate.switch-heat input:checked + span  ,
+.switch-success.switch-heat input:checked + span  ,
+.switch-info.switch-heat input:checked + span {  }
+
+
+td.nr-low,td.nr-high,td.nr-minimal,td.nr-moderate,td.nr-severe,
+td.gr-low,td.gr-high,td.gr-minimal,td.gr-moderate,td.gr-severe,
+td.cr-poor,td.cr-weak,td.cr-moderate,td.cr-good,td.cr-excellent{
+    font-weight: bold;
+    color: #fff;
+    text-shadow : 1px 1px 1px #000;
+    text-transform: uppercase;
+}
+
+/*.risk_label { border:1px solid #aaa; background:#fff; box-shadow:3px 3px 3px rgba(0,0,0,0.3); padding:5px; font-size:9px;  display:inline-block; margin:2px;  } */
+.risk_label { 
+    width: auto;
+    height: auto; 
+    overflow: hidden; 
+    color: #fff;
+    background: #000;
+    display: inline-block; 
+    margin: 2px;  
+    font-size: 10px;
+    padding: 3px;
+    border-radius: 3px;
+}
+.risk_label:hover { color: #fff;  }
+.risk_label strong { 
+
+}
+.short_code { } 
+.long_code  { display:none; } 
+.heat-circle:before { content: "";}
+.heat-circle {  display: inline-block}
+.padder { padding: 7px;}
+
+.item-attributes li.list-group-item {
+    padding:3px;
+}
+
+.obligation-detail{
+    margin-top: 40px;
+}
+
+.bg-white { background: #fff;}
+

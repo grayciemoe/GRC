@@ -1,0 +1,8 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix} Code By Alex
+${licensePrefix} Eat Code Sleep Repeat
+<#if licenseLast??>
+${licenseLast}
+</#if>

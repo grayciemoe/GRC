@@ -1,0 +1,5 @@
+cron:
+- description: "Update Dashboards and Send Emails"
+  url: /index.php/Cron
+  schedule: every 2 minutes
+  timezone: Africa/Nairobi

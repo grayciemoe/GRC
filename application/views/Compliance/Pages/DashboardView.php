@@ -54,7 +54,7 @@ $legal_non_comp = $data['legal_non_comp'];
                 <span class="label label-info"> <?= $approved_breaches ?> </span> <span class="text-muted"> No. of Breaches</span>
             </div>
         </div>
-
+<!-- pie chart -->
         <div class="col-sm-4 col-xs-12">
             <div class="card card-block">
                 <div id="obligation_type">
@@ -63,22 +63,12 @@ $legal_non_comp = $data['legal_non_comp'];
                 </div>
             </div>
         </div>
-
-
-
+<!-- stacked column chart-->
         <div class="col-sm-5 col-xs-12 third-pie">
             <div class="card card-block">
-                <div class="card-title m-t-10">
-                    <h4 class="text-center"> No. of Obligations by Compliance Requirement Type & Completion Status</h4>
+                <div id="stacked_bar">
+                    
                 </div>
-                <?php
-                $array = array(
-                    array("series_name" => "Statutory", "color" => "#ff8800", "data" => array("Fully" => $stat_fully ? $stat_fully : 0, "Partially" => $stat_part ? $stat_part : 0, "None" => $stat_non_comp ? $stat_non_comp : 0),),
-                    array("series_name" => "Legal", "color" => "#992222", "data" => array("Fully" => $legal_fully ? $legal_fully : 0, "Partially" => $legal_part ? $legal_part : 0, "None" => $legal_non_comp ? $legal_non_comp : 0),),
-                    array("series_name" => "Business_Compliance", "color" => "#55cc55", "data" => array("Fully" => $business_fully ? $business_fully : 0, "Partially" => $business_part ? $business_part : 0, "None" => $business_non_comp ? $business_non_comp : 0),),
-                );
-                ?>
-                <?= bar_graph_c3("compliance_dashboard_bar", $array); ?>
             </div>
         </div>
         <a class="btn btn-sm btn-primary pull-right m-b-10" id="comp_table_report_export_btn">Export to PDF</a>
@@ -212,7 +202,7 @@ foreach ($scripts as $key => $value) {
                 .appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
     });</script>
 
-<!-- Highcharts Pie Chart Script -->
+<!-- Highcharts Pie Chart No of obligations per type -->
 <script type="text/javascript">
 <?php
 $data = json_encode(array(
@@ -254,6 +244,67 @@ $data = json_encode(array(
                 }]
         });
     });</script>
+<!-- Highcharts Stacked bar graph Obligations by status -->
+<script type="text/javascript">
+Highcharts.chart('stacked_bar', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Stacked column chart'
+    },
+    xAxis: {
+        categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Total fruit consumption'
+        },
+        stackLabels: {
+            enabled: true,
+            style: {
+                fontWeight: 'bold',
+                color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+            }
+        }
+    },
+    legend: {
+        align: 'right',
+        x: -30,
+        verticalAlign: 'top',
+        y: 25,
+        floating: true,
+        backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+        borderColor: '#CCC',
+        borderWidth: 1,
+        shadow: false
+    },
+    tooltip: {
+        headerFormat: '<b>{point.x}</b><br/>',
+        pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+    },
+    plotOptions: {
+        column: {
+            stacking: 'normal',
+            dataLabels: {
+                enabled: true,
+                color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+            }
+        }
+    },
+    series: [{
+        name: 'John',
+        data: [5, 3, 4, 7, 2]
+    }, {
+        name: 'Jane',
+        data: [2, 2, 3, 2, 1]
+    }, {
+        name: 'Joe',
+        data: [3, 4, 4, 2, 5]
+    }]
+});
+</script>
 <!-- DataTables init Script -->
 <script type="text/javascript">
     $(document).ready(function () {

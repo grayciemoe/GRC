@@ -8,16 +8,35 @@ $obligations = $data['obligations'];
 ?>
 <div class="container-fluid">
     <div class="card">
-        <div class="card-header bg-light">
-            <?php if (am_user_type(array(1, 5))): ?>
-                <a href="<?= base_url("index.php/Compliance/complianceRequirementForm/0/{$data['type']}") ?>" 
-                   accesskey=""<?= MODAL_LINK ?> 
-                   class="btn btn-secondary btn-sm btn-small pull-right">
-                    <i class="icon icon-plus"></i> New Compliance Requirement
-                </a>
-            <?php endif; ?>
-            <h4 class="card-title"><?= $data['type'] ?></h4>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="btn-group pull-right">
+                    <br/>
+                    <button class="btn btn-sm btn-secondary hidden cr_details_toggle" ><i class="icon icon-arrow-up"></i> Less </button>
+                    <button class="btn btn-sm btn-secondary  cr_details_toggle"><i class="icon icon-arrow-down"></i> More </button>
+                    <?php if (am_user_type(array(1, 5))): ?>
+                        <a href="<?= base_url("index.php/Compliance/complianceRequirementForm/0/{$data['type']}") ?>" 
+                           accesskey=""<?= MODAL_LINK ?> 
+                           class="btn btn-secondary btn-sm btn-small pull-right">
+                            <i class="icon icon-plus"></i> New Compliance Requirement
+                        </a>
+                    <?php endif; ?>
+                </div>
+                <div class="col-xs-4">
+                    <h4 class="card-title"><br/><?= $data['type'] ?></h4>
+                </div>
+            </div>
         </div>
+        <div class="row" id="cr_details">
+            <div class="row">
+                <div class="col-sm-4">
+                    <p>Testing More less toggle</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="card">
         <div class="card-block">
             <?= form_open_multipart("Compliance/obligations_filter", array("id" => "frm_obligations_filter", "class" => null)); ?>
             <div class="row">
@@ -139,6 +158,27 @@ $obligations = $data['obligations'];
         });
         //setTimeout((function(){obligations_filter();}),1000);
     }
+
+</script>
+<script>
+    $('.cr_details_toggle').click(function (parameters) {
+        $('#cr_details').slideToggle('fast');
+        $('.cr_details_toggle').toggleClass('hidden');
+    });
+    $(document).ready(function () {
+        $('#cr_details').hide(0);
+    });
+
+    var resizefunc = [];
+    $('#datatable').DataTable();
+    //Buttons examples
+    var table = $('#datatable-buttons').DataTable({
+        lengthChange: false,
+        buttons: ['copy', 'excel', 'pdf', 'colvis'],
+    });
+
+    table.buttons().container().appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
+
 
 </script>
 

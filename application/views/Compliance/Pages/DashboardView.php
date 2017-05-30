@@ -54,7 +54,7 @@ $legal_non_comp = $data['legal_non_comp'];
                 <span class="label label-info"> <?= $approved_breaches ?> </span> <span class="text-muted"> No. of Breaches</span>
             </div>
         </div>
-<!-- pie chart -->
+        <!-- pie chart -->
         <div class="col-sm-4 col-xs-12">
             <div class="card card-block">
                 <div id="obligation_type">
@@ -63,11 +63,13 @@ $legal_non_comp = $data['legal_non_comp'];
                 </div>
             </div>
         </div>
-<!-- stacked column chart-->
+        <!-- stacked column chart-->
         <div class="col-sm-5 col-xs-12 third-pie">
             <div class="card card-block">
                 <div id="stacked_bar">
-                    
+
+
+
                 </div>
             </div>
         </div>
@@ -246,64 +248,69 @@ $data = json_encode(array(
     });</script>
 <!-- Highcharts Stacked bar graph Obligations by status -->
 <script type="text/javascript">
-Highcharts.chart('stacked_bar', {
-    chart: {
-        type: 'column'
-    },
-    title: {
-        text: 'Stacked column chart'
-    },
-    xAxis: {
-        categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: 'Total fruit consumption'
+<?php
+$statutory =  json_encode( array($stat_fully ? $stat_fully : 0, $stat_part ? $stat_part : 0, $stat_non_comp ? $stat_non_comp : 0));
+$legal =  json_encode( array($legal_fully ? $legal_fully : 0, $legal_part ? $legal_part : 0, $legal_non_comp ? $legal_non_comp : 0));
+$business = json_encode(array($business_fully ? $business_fully : 0, $business_part ? $business_part : 0, $business_non_comp ? $business_non_comp : 0));
+?>
+    Highcharts.chart('stacked_bar', {
+        chart: {
+            type: 'column'
         },
-        stackLabels: {
-            enabled: true,
-            style: {
-                fontWeight: 'bold',
-                color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
-            }
-        }
-    },
-    legend: {
-        align: 'right',
-        x: -30,
-        verticalAlign: 'top',
-        y: 25,
-        floating: true,
-        backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
-        borderColor: '#CCC',
-        borderWidth: 1,
-        shadow: false
-    },
-    tooltip: {
-        headerFormat: '<b>{point.x}</b><br/>',
-        pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
-    },
-    plotOptions: {
-        column: {
-            stacking: 'normal',
-            dataLabels: {
+        title: {
+            text: 'Obligations Status'
+        },
+        xAxis: {
+            categories: ['Fully Compliant', 'Partially Compliant', 'Not Compliant']
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'No of obligations'
+            },
+            stackLabels: {
                 enabled: true,
-                color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+                style: {
+                    fontWeight: 'bold',
+                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                }
             }
-        }
-    },
-    series: [{
-        name: 'John',
-        data: [5, 3, 4, 7, 2]
-    }, {
-        name: 'Jane',
-        data: [2, 2, 3, 2, 1]
-    }, {
-        name: 'Joe',
-        data: [3, 4, 4, 2, 5]
-    }]
-});
+        },
+        legend: {
+            align: 'right',
+            x: -30,
+            verticalAlign: 'top',
+            y: 25,
+            floating: true,
+            backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+            borderColor: '#CCC',
+            borderWidth: 1,
+            shadow: false
+        },
+        tooltip: {
+            headerFormat: '<b>{point.x}</b><br/>',
+            pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+        },
+        plotOptions: {
+            column: {
+                stacking: 'normal',
+                dataLabels: {
+                    enabled: true,
+                    color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'gray'
+                }
+            }
+        },
+        series: [{
+                name: 'Statutory',
+                data: <?= $statutory?>
+            }, {
+                name: 'Legal',
+                data: <?= $legal?>
+            }, {
+                name: 'Business Compliance',
+                data: <?= $business?>
+            }]
+    });
 </script>
 <!-- DataTables init Script -->
 <script type="text/javascript">

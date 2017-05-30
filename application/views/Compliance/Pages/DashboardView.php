@@ -222,7 +222,7 @@ $data = json_encode(array(
                 text: 'No. of Obligations by Type'
             },
             tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                pointFormat: '{series.name}: <b>{point.y}</b>'
             },
             plotOptions: {
                 pie: {
@@ -241,7 +241,7 @@ $data = json_encode(array(
                 }
             },
             series: [{
-                    name: 'Delivered amount',
+                    name: 'Number of Obligations',
                     data: <?= $data ?>
                 }]
         });

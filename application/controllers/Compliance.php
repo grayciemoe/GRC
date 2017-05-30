@@ -48,7 +48,7 @@ class Compliance extends CI_Controller {
         $this->load->model("Environment/RepositoryModel", "repository");
         $this->load->model("Environment/EnvironmentModel", "environment");
         $this->load->model("Environment/EnvironmentLevelModel", "environmentLevel");
-        
+
         $this->load->model("Audit/AuditModel", "audit");
         $this->load->model("Audit/IssueModel", "issue");
         $this->load->model("Audit/RecommendationModel", "recommendation");
@@ -237,6 +237,8 @@ class Compliance extends CI_Controller {
         $data['obligations'] = $this->compliance->getTypeObligations("Statutory Returns");
         $data['compliance_requirements'] = $this->compliance->getTypeComplianceRequirements("Statutory Returns");
         $data['registers'] = $this->complianceRegister->getAll();
+        $compliance_index = $this->dataIndex->getCompliance();
+        $data['status'] = objectToArray(json_decode($compliance_index['data']));
 
 //$data[];
         $this->page("StatutoryView", $data);
@@ -248,6 +250,8 @@ class Compliance extends CI_Controller {
         $data['obligations'] = $this->compliance->getTypeObligations($data['type']);
         $data['compliance_requirements'] = $this->compliance->getTypeComplianceRequirements("Legal / Regulatory Requirements");
         $data['registers'] = $this->complianceRegister->getAll();
+        $compliance_index = $this->dataIndex->getCompliance();
+        $data['status'] = objectToArray(json_decode($compliance_index['data']));
 
         $this->page("LegalView", $data, array("chart.min", "moment", "bootstrap-timepicker.min", "bootstrap-datepicker.min", "daterangepicker", "jquery.dataTables.min", "dataTables.bootstrap4.min", "dataTables.buttons.min", "buttons.bootstrap4.min", "jszip.min", "pdfmake.min", "vfs_fonts", "buttons.html5.min", "buttons.print.min", "buttons.colVis.min", "dataTables.responsive.min", "responsive.bootstrap4.min"), array());
     }
@@ -258,6 +262,9 @@ class Compliance extends CI_Controller {
         $data['obligations'] = $this->compliance->getTypeObligations("Business Compliance Requirements");
         $data['compliance_requirements'] = $this->compliance->getTypeComplianceRequirements("Business Compliance Requirements");
         $data['registers'] = $this->complianceRegister->getAll();
+        $compliance_index = $this->dataIndex->getCompliance();
+        $data['status'] = objectToArray(json_decode($compliance_index['data']));
+        
         $this->page("BusinessView", $data, array("chart.min", "moment", "bootstrap-timepicker.min", "bootstrap-datepicker.min",
             "daterangepicker", "jquery.dataTables.min", "dataTables.bootstrap4.min", "dataTables.buttons.min", "buttons.bootstrap4.min", "jszip.min", "pdfmake.min", "vfs_fonts", "buttons.html5.min", "buttons.print.min", "buttons.colVis.min", "dataTables.responsive.min", "responsive.bootstrap4.min"), array());
     }

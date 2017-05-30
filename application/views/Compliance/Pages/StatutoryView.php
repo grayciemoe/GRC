@@ -32,11 +32,11 @@ $stat_non_comp = $data['status']['stat_non_comp'];
         </div>
         <div class="row" id="cr_details">
             <div class="row">
-                
-                    <div id="obligation_status">
-                        
-                    
-                    
+
+                <div id="obligation_status">
+
+
+
                 </div>
 
             </div>
@@ -192,8 +192,8 @@ $stat_non_comp = $data['status']['stat_non_comp'];
 <?php
 $data = json_encode(array(
     array("Fully Complied", $stat_fully),
-    array("Partially Complied",$stat_part ),
-    array("Not Complied",$stat_non_comp )
+    array("Partially Complied", $stat_part),
+    array("Not Complied", $stat_non_comp)
         ));
 ?>
     $(function () {
@@ -205,7 +205,7 @@ $data = json_encode(array(
                 text: null
             },
             tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                pointFormat: '{series.name}: <b>{point.y}</b>'
             },
             plotOptions: {
                 pie: {
@@ -224,7 +224,7 @@ $data = json_encode(array(
                 }
             },
             series: [{
-                    name: 'Delivered amount',
+                    name: 'Number of Obligations',
                     data: <?= $data ?>
                 }]
         });

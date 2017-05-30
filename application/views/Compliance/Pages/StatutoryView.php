@@ -5,6 +5,9 @@ if (!am_user_type(array(1, 9, 6, 5))) {
 }
 ?><?php
 $obligations = $data['obligations'];
+$stat_fully = $data['status']['stat_fully'];
+$stat_part = $data['status']['stat_part'];
+$stat_non_comp = $data['status']['stat_non_comp'];
 ?>
 <div class="container-fluid">
     <div class="card">
@@ -29,8 +32,11 @@ $obligations = $data['obligations'];
         </div>
         <div class="row" id="cr_details">
             <div class="row">
-                <div class="col-sm-4">
-                    <p>Testing More less toggle</p>
+                
+                    <div id="obligation_status">
+                        
+                    
+                    
                 </div>
 
             </div>
@@ -181,4 +187,45 @@ $obligations = $data['obligations'];
 
 
 </script>
+<!-- Highcharts Pie Chart No of obligations per type -->
+<script type="text/javascript">
+<?php
+$data = json_encode(array(
+    array("Fully Complied", $stat_fully),
+    array("Partially Complied",$stat_part ),
+    array("Not Complied",$stat_non_comp )
+        ));
+?>
+    $(function () {
+        var myChart = Highcharts.chart('obligation_status', {
+            chart: {
+                type: 'pie'
+            },
+            title: {
+                text: null
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    innerSize: 100,
+                    depth: 45,
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>:<br/> {point.percentage:.1f} %',
+                        style: {
+                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                        }
+                    }
 
+                }
+            },
+            series: [{
+                    name: 'Delivered amount',
+                    data: <?= $data ?>
+                }]
+        });
+    });</script>
